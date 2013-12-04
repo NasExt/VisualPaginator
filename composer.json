@@ -1,0 +1,29 @@
+{
+    "name": "nasext/visual-paginator",
+    "type": "library",
+    "description": "VisualPaginator for Nette Framework",
+    "keywords": ["nette", "nasext", "VisualPaginator"],
+    "license": ["MIT"],
+    "authors": [
+        {
+            "name": "David Grudl",
+            "email": "david@grudl.com"
+        },
+        {
+            "name": "Jan Dolecek",
+            "email": "juzna.cz@gmail.com"
+        },
+        {
+            "name": "Dusan Hudak"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "nette/nette": "@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "NasExt\\Controls\\": "src/"
+        }
+    }
+}
