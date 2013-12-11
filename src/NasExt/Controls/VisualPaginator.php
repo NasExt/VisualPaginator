@@ -58,6 +58,7 @@ class VisualPaginator extends Control
 	 */
 	public function setTemplateFile($file)
 	{
+		$this->templateFile = $file;
 		return $this;
 	}
 
