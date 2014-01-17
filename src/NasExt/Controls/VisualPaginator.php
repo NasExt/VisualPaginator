@@ -108,7 +108,7 @@ class VisualPaginator extends Control
 		$this->template->steps = $steps;
 		$this->template->paginator = $paginator;
 		$this->template->isAjax = $this->isAjax;
-		$this->template->handle = !empty($this->onShowPage) ? TRUE : FALSE;
+		$this->template->handle = 'showPage!';
 
 		$this->template->setFile($this->getTemplateFile());
 		$this->template->render();

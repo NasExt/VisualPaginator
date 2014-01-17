@@ -1,17 +1,16 @@
-{var $link = $handle ? 'showPage!' : 'this'}
 <div class="visualPaginator pagination">
 	<ul>
 		{if $paginator->isFirst()}
 			<li class="disabled"><span>«</span></li>
 		{else}
-			<li><a n:class="$isAjax ? ajax" href="{link $link, 'page' => $paginator->page - 1}">«</a></li>
+			<li><a n:class="$isAjax ? ajax" href="{link $handle, 'page' => $paginator->page - 1}">«</a></li>
 		{/if}
 
 		{foreach $steps as $step}
 			{if $step == $paginator->page}
 				<li class="active"><span>{$step}</span></li>
 			{else}
-				<li><a n:class="$isAjax ? ajax" href="{link $link, 'page' => $step}">{$step}</a></li>
+				<li><a n:class="$isAjax ? ajax" href="{link $handle, 'page' => $step}">{$step}</a></li>
 			{/if}
 			{if $iterator->nextValue > $step + 1}
 				<li><span>...</span></li>
@@ -21,7 +20,7 @@
 		{if $paginator->isLast()}
 			<li class="disabled"><span>»</span></li>
 		{else}
-			<li><a n:class="$isAjax ? ajax" href="{link $link, 'page' => $paginator->page + 1}">»</a></li>
+			<li><a n:class="$isAjax ? ajax" href="{link $handle, 'page' => $paginator->page + 1}">»</a></li>
 		{/if}
 	</ul>
 </div>
