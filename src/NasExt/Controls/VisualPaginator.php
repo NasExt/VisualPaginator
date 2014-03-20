@@ -41,6 +41,17 @@ class VisualPaginator extends Control
 	private $isAjax;
 
 
+	public function __construct()
+	{
+		parent::__construct();
+
+		$reflection = $this->getReflection();
+		$dir = dirname($reflection->getFileName());
+		$name = $reflection->getShortName();
+		$this->templateFile = $dir . DIRECTORY_SEPARATOR . $name . '.latte';
+	}
+
+
 	/**
 	 * @param bool $value
 	 * @return VisualPaginator provides fluent interface
@@ -48,17 +59,6 @@ class VisualPaginator extends Control
 	public function setAjaxRequest($value = TRUE)
 	{
 		$this->isAjax = $value;
-		return $this;
-	}
-
-
-	/**
-	 * @param string $file
-	 * @return VisualPaginator provides fluent interface
-	 */
-	public function setTemplateFile($file)
-	{
-		$this->templateFile = $file;
 		return $this;
 	}
 
@@ -81,6 +81,28 @@ class VisualPaginator extends Control
 	public function handleShowPage($page)
 	{
 		$this->onShowPage($this, $page);
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function getTemplateFile()
+	{
+		return $this->templateFile;
+	}
+
+
+	/**
+	 * @param string $file
+	 * @return VisualPaginator provides fluent interface
+	 */
+	public function setTemplateFile($file)
+	{
+		if ($file) {
+			$this->templateFile = $file;
+		}
+		return $this;
 	}
 
 
@@ -124,21 +146,5 @@ class VisualPaginator extends Control
 	{
 		parent::loadState($params);
 		$this->getPaginator()->page = $this->page;
-	}
-
-
-	/**
-	 * @return string
-	 */
-	public function getTemplateFile()
-	{
-		if ($this->templateFile) {
-			return $this->templateFile;
-		}
-
-		$reflection = $this->getReflection();
-		$dir = dirname($reflection->getFileName());
-		$name = $reflection->getShortName();
-		return $dir . DIRECTORY_SEPARATOR . $name . '.latte';
 	}
 }
