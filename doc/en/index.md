@@ -30,7 +30,7 @@ class FooPresenter extends Presenter
 	public function renderDefault()
 	{
 		$fooList = $this->model->findAll();
-		$fooListCount = $fooList->count()
+		$fooListCount = $fooList->count();
 
 		/** @var NasExt\Controls\VisualPaginator $vp */
 		$vp = $this['vp'];
