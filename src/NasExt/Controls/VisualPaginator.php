@@ -40,6 +40,9 @@ class VisualPaginator extends Control
 	/** @var  bool */
 	private $isAjax;
 
+	/** @var int  */
+	private $countBlocks = 4;
+
 
 	public function __construct()
 	{
@@ -49,6 +52,15 @@ class VisualPaginator extends Control
 		$dir = dirname($reflection->getFileName());
 		$name = $reflection->getShortName();
 		$this->templateFile = $dir . DIRECTORY_SEPARATOR . $name . '.latte';
+	}
+
+	/**
+	 * @param int $countBlocks
+	 * @return $this
+	 */
+	public function setCountBlocks($countBlocks) {
+		$this->countBlocks = $countBlocks;
+		return $this;
 	}
 
 
@@ -118,10 +130,11 @@ class VisualPaginator extends Control
 			$steps = array($page);
 		} else {
 			$arr = range(max($paginator->firstPage, $page - 3), min($paginator->lastPage, $page + 3));
-			$count = 4;
-			$quotient = ($paginator->pageCount - 1) / $count;
-			for ($i = 0; $i <= $count; $i++) {
-				$arr[] = round($quotient * $i) + $paginator->firstPage;
+			if ($this->countBlocks) {
+				$quotient = ($paginator->pageCount - 1) / $this->countBlocks;
+				for ($i = 0; $i <= $this->countBlocks; $i++) {
+					$arr[] = round($quotient * $i) + $paginator->firstPage;
+				}
 			}
 			sort($arr);
 			$steps = array_values(array_unique($arr));
