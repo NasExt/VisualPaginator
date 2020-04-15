@@ -46,8 +46,6 @@ class VisualPaginator extends Control
 
 	public function __construct()
 	{
-		parent::__construct();
-
 		$reflection = self::getReflection();
 		$dir = dirname($reflection->getFileName());
 		$name = $reflection->getShortName();
