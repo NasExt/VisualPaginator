@@ -1,5 +1,5 @@
 {
-    "name": "camohub/visual-paginator",
+    "name": "nasext/visual-paginator",
     "type": "library",
     "description": "VisualPaginator for Nette Framework",
     "keywords": ["nette", "nasext", "VisualPaginator"],
@@ -20,7 +20,8 @@
     "require": {
         "php": ">=7.0",
         "nette/utils": "~3.0",
-        "nette/application": "~3.0"
+        "nette/application": "~3.0",
+        "camohub/visual-paginator": "4.0.2"
     },
     "autoload": {
         "psr-0": {
