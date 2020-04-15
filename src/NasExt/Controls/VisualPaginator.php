@@ -48,7 +48,7 @@ class VisualPaginator extends Control
 	{
 		parent::__construct();
 
-		$reflection = $this->getReflection();
+		$reflection = self::getReflection();
 		$dir = dirname($reflection->getFileName());
 		$name = $reflection->getShortName();
 		$this->templateFile = $dir . DIRECTORY_SEPARATOR . $name . '.latte';
