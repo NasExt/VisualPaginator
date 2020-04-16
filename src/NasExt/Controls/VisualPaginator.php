@@ -46,9 +46,7 @@ class VisualPaginator extends Control
 
 	public function __construct()
 	{
-		parent::__construct();
-
-		$reflection = $this->getReflection();
+		$reflection = self::getReflection();
 		$dir = dirname($reflection->getFileName());
 		$name = $reflection->getShortName();
 		$this->templateFile = $dir . DIRECTORY_SEPARATOR . $name . '.latte';
@@ -155,7 +153,7 @@ class VisualPaginator extends Control
 	 * @param  array
 	 * @return void
 	 */
-	public function loadState(array $params)
+	public function loadState(array $params): void
 	{
 		parent::loadState($params);
 		$this->getPaginator()->page = $this->page;
